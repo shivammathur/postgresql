@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
 .\"      Date: 2026
-.\"    Manual: PostgreSQL 14.22 Documentation
-.\"    Source: PostgreSQL 14.22
+.\"    Manual: PostgreSQL 14.23 Documentation
+.\"    Source: PostgreSQL 14.23
 .\"  Language: English
 .\"
-.TH "ALTER TABLE" "7" "2026" "PostgreSQL 14.22" "PostgreSQL 14.22 Documentation"
+.TH "ALTER TABLE" "7" "2026" "PostgreSQL 14.23" "PostgreSQL 14.23 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -153,7 +153,7 @@ changes the definition of an existing table\&. There are several subforms descri
 ACCESS EXCLUSIVE
 lock is acquired unless explicitly noted\&. When multiple subcommands are given, the lock acquired will be the strictest one required by any subcommand\&.
 .PP
-ADD COLUMN [ IF NOT EXISTS ]
+ADD [ COLUMN ] [ IF NOT EXISTS ]
 .RS 4
 This form adds a new column to the table, using the same syntax as
 \fBCREATE TABLE\fR\&. If
@@ -161,7 +161,7 @@ IF NOT EXISTS
 is specified and a column already exists with this name, no error is thrown\&.
 .RE
 .PP
-DROP COLUMN [ IF EXISTS ]
+DROP [ COLUMN ] [ IF EXISTS ]
 .RS 4
 This form drops a column from a table\&. Indexes and table constraints involving the column will be automatically dropped as well\&. Multivariate statistics referencing the dropped column will also be removed if the removal of the column would cause the statistics to contain data for only a single column\&. You will need to say
 CASCADE

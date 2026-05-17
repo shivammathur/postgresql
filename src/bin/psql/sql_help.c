@@ -424,7 +424,7 @@ sql_help_ALTER_FOREIGN_TABLE(PQExpBuffer buf)
 					  "\n"
 					  "%s\n"
 					  "\n"
-					  "    ADD [ COLUMN ] %s %s [ COLLATE %s ] [ %s [ ... ] ]\n"
+					  "    ADD [ COLUMN ] [ IF NOT EXISTS ] %s %s [ COLLATE %s ] [ %s [ ... ] ]\n"
 					  "    DROP [ COLUMN ] [ IF EXISTS ] %s [ RESTRICT | CASCADE ]\n"
 					  "    ALTER [ COLUMN ] %s [ SET DATA ] TYPE %s [ COLLATE %s ]\n"
 					  "    ALTER [ COLUMN ] %s SET DEFAULT %s\n"
