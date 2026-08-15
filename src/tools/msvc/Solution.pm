@@ -477,7 +477,7 @@ sub GenerateFiles
 		PG_VERSION          => qq{"$package_version$extraver"},
 		PG_VERSION_NUM      => sprintf("%d%04d", $majorver, $minorver),
 		PG_VERSION_STR =>
-		  qq{"PostgreSQL $package_version$extraver, compiled by Visual C++, $bits-bit"},
+		  qq{"PostgreSQL $package_version$extraver, compiled by Visual C++ build " CppAsString2(_MSC_VER) ", $bits-bit"},
 		PROFILE_PID_DIR         => undef,
 		PTHREAD_CREATE_JOINABLE => undef,
 		RELSEG_SIZE             => (1024 / $self->{options}->{blocksize}) *
@@ -1352,6 +1352,34 @@ sub new
 	$self->{vcver}                      = '17.00';
 	$self->{visualStudioName}           = 'Visual Studio 2022';
 	$self->{VisualStudioVersion}        = '17.0.31903.59';
+	$self->{MinimumVisualStudioVersion} = '10.0.40219.1';
+
+	return $self;
+}
+
+package VS2026Solution;
+
+#
+# Package that encapsulates a Visual Studio 2026 solution file
+#
+
+use Carp;
+use strict;
+use warnings;
+use base qw(Solution);
+
+no warnings qw(redefine);    ## no critic
+
+sub new
+{
+	my $classname = shift;
+	my $self      = $classname->SUPER::_new(@_);
+	bless($self, $classname);
+
+	$self->{solutionFileVersion}        = '12.00';
+	$self->{vcver}                      = '18.00';
+	$self->{visualStudioName}           = 'Visual Studio 2026';
+	$self->{VisualStudioVersion}        = '18.7.11925.98';
 	$self->{MinimumVisualStudioVersion} = '10.0.40219.1';
 
 	return $self;

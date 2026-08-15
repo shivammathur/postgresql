@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
 .\"      Date: 2026
-.\"    Manual: PostgreSQL 14.23 Documentation
-.\"    Source: PostgreSQL 14.23
+.\"    Manual: PostgreSQL 14.24 Documentation
+.\"    Source: PostgreSQL 14.24
 .\"  Language: English
 .\"
-.TH "ALTER TABLE" "7" "2026" "PostgreSQL 14.23" "PostgreSQL 14.23 Documentation"
+.TH "ALTER TABLE" "7" "2026" "PostgreSQL 14.24" "PostgreSQL 14.24 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -678,9 +678,7 @@ ATTACH PARTITION \fIpartition_name\fR { FOR VALUES \fIpartition_bound_spec\fR | 
 This form attaches an existing table (which might itself be partitioned) as a partition of the target table\&. The table can be attached as a partition for specific values using
 FOR VALUES
 or as a default partition by using
-DEFAULT\&. For each index in the target table, a corresponding one will be created in the attached table; or, if an equivalent index already exists, it will be attached to the target table\*(Aqs index, as if
-\fBALTER INDEX ATTACH PARTITION\fR
-had been executed\&. Note that if the existing table is a foreign table, it is currently not allowed to attach the table as a partition of the target table if there are
+DEFAULT\&. For each index in the target table, if a valid equivalent index already exists in the partition, it will be attached to the target table\*(Aqs index, as if ALTER INDEX ATTACH PARTITION had been executed; otherwise, a new corresponding index will be created\&. Invalid indexes on the partition are skipped\&. Note that if the existing table is a foreign table, it is currently not allowed to attach the table as a partition of the target table if there are
 UNIQUE
 indexes on the target table\&. (See also
 CREATE FOREIGN TABLE (\fBCREATE_FOREIGN_TABLE\fR(7))\&.) For each user\-defined row\-level trigger that exists in the target table, a corresponding one is created in the attached table\&.
