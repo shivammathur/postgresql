@@ -1023,7 +1023,7 @@ TCLSH
     Tcl interpreter program. This will be used to determine the
     dependencies for building PL/Tcl. If this is not set, the following
     are probed in this order:
-    tclsh tcl tclsh8.6 tclsh86 tclsh8.5 tclsh85          tclsh8.4 tclsh84.
+    tclsh tcl tclsh8.6 tclsh86 tclsh8.5 tclsh85 tclsh8.4 tclsh84.
 
 XML2_CONFIG
 
@@ -1358,8 +1358,7 @@ the server to have MAXDATA bytes set aside for the heap, allocated in
 256 MB segments. When you find a workable configuration, "ldedit" can be
 used to modify the binaries so that they default to using the desired
 heap size. PostgreSQL can also be rebuilt, passing
-configure      LDFLAGS="-Wl,-bmaxdata:0xn0000000" to achieve the same
-effect.
+configure LDFLAGS="-Wl,-bmaxdata:0xn0000000" to achieve the same effect.
 
 For a 64-bit build, set OBJECT_MODE to 64 and pass CC="gcc -maix64" and
 LDFLAGS="-Wl,-bbigtoc" to "configure". (Options for "xlc" might differ.)
@@ -1384,7 +1383,7 @@ Windows, but that method is inferior to the native Windows build and
 running a server under Cygwin is no longer recommended.
 
 When building from source, proceed according to the Unix-style
-installation procedure (i.e., ./configure;     make; etc.), noting the
+installation procedure (i.e., ./configure; make; etc.), noting the
 following Cygwin-specific differences:
 
 -   Set your path to use the Cygwin bin directory before the Windows
@@ -1399,11 +1398,11 @@ following Cygwin-specific differences:
 -   OpenSSL is not supported.
 
 -   Start "cygserver" for shared memory support. To do this, enter the
-    command /usr/sbin/cygserver        &. This program needs to be
-    running anytime you start the PostgreSQL server or initialize a
-    database cluster ("initdb"). The default "cygserver" configuration
-    may need to be changed (e.g., increase SEMMNS) to prevent PostgreSQL
-    from failing due to a lack of system resources.
+    command /usr/sbin/cygserver &. This program needs to be running
+    anytime you start the PostgreSQL server or initialize a database
+    cluster ("initdb"). The default "cygserver" configuration may need
+    to be changed (e.g., increase SEMMNS) to prevent PostgreSQL from
+    failing due to a lack of system resources.
 
 -   Building might fail on some systems where a locale other than C is
     in use. To fix this, set the locale to C by doing "export
@@ -1477,8 +1476,8 @@ tested or supported by the PostgreSQL developers.
 macOS's "System Integrity Protection" (SIP) feature breaks make check,
 because it prevents passing the needed setting of DYLD_LIBRARY_PATH down
 to the executables being tested. You can work around that by doing
-make     install before make check. Most PostgreSQL developers just turn
-off SIP, though.
+make install before make check. Most PostgreSQL developers just turn off
+SIP, though.
 
 ------------------------------------------------------------------------
 
